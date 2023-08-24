@@ -1,0 +1,32 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 71.6vh;
+    .register-form {
+        width: 500px;
+        .ant-input:hover {
+            border-color: blueviolet;
+        }
+        .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+            border-color: blueviolet;
+        }
+        .ant-input:focus,
+        .ant-input-focused {
+            border-color: blueviolet;
+        }
+        .register-btn {
+            background-color: var(--primary-color);
+            margin-right: 10px;
+            &:hover {
+                background-color: blueviolet;
+            }
+        }
+        .login-link {
+            color: var(--primary-color);
+            &:hover {
+                color: blueviolet;
+            }
+        }
+    }
+}

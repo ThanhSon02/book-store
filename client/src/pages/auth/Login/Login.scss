@@ -1,0 +1,47 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 71.7vh;
+    .login-form {
+        width: 500px;
+        .ant-input-affix-wrapper:focus,
+        .ant-input-affix-wrapper-focused {
+            border-color: blueviolet;
+        }
+        .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+            border-color: blueviolet;
+        }
+        .ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover
+            .ant-checkbox-checked:not(.ant-checkbox-disabled)
+            .ant-checkbox-inner {
+            background-color: var(--primary-color);
+            border-color: blueviolet;
+        }
+        .ant-checkbox-checked .ant-checkbox-inner {
+            background-color: var(--primary-color);
+            border-color: blueviolet;
+        }
+        .ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover
+            .ant-checkbox-inner,
+        .ant-checkbox:not(.ant-checkbox-disabled):hover .ant-checkbox-inner {
+            border-color: blueviolet;
+        }
+        .login-form-button {
+            margin-right: 10px;
+            background-color: var(--primary-color);
+            &:hover {
+                background-color: blueviolet;
+            }
+        }
+        .checkbox-remember-password {
+            user-select: none;
+        }
+        .register-link {
+            color: var(--primary-color);
+            &:hover {
+                color: blueviolet;
+            }
+        }
+    }
+}

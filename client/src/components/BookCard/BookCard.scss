@@ -1,0 +1,22 @@
+.container {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    padding: 14px;
+    &:hover {
+        box-shadow: 0 0 8px rgb(201 200 199 / 50%);
+    }
+    .book-img {
+        cursor: pointer;
+    }
+    .book-title {
+        font-size: 24px;
+        margin: 14px 0 8px;
+        cursor: pointer;
+    }
+    .rating {
+        margin: 8px 0;
+    }
+}

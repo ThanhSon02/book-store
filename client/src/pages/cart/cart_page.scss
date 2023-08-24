@@ -1,0 +1,68 @@
+.cart-page {
+    .cart-title {
+        margin-bottom: 16px;
+    }
+    .cart-content {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        .step {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: var(--background-color);
+        }
+        .cart-list {
+            .cart-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 60px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px 20px;
+                background-color: var(--background-color);
+                margin-bottom: 20px;
+                .cart-item-product {
+                    display: inherit;
+                    flex: 1;
+                    align-items: center;
+                }
+                .cart-item-unit {
+                    display: inherit;
+                    gap: 20px;
+                    span:last-child {
+                        font-weight: 700;
+                    }
+                    span:first-child {
+                        position: relative;
+                        color: #747171;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            border-bottom: 2px solid #000;
+                            width: 100%;
+                            left: 0;
+                            top: 10px;
+                        }
+                    }
+                }
+                .cart-item-quantity {
+                    display: inherit;
+                    align-items: center;
+                    input,
+                    button {
+                        background-color: #fff;
+                        width: 30px;
+                        text-align: center;
+                        padding: 6px 10px;
+                        border: 1px solid #000;
+                    }
+                }
+                .cart-item-price {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

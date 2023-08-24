@@ -1,0 +1,96 @@
+.book-detai-container {
+    display: flex;
+    width: 100%;
+    .img-section {
+        width: 50%;
+        .img {
+            margin: 0 auto;
+            width: 400px;
+            height: 500px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-bottom: 24px;
+        }
+    }
+    .detail-section {
+        width: 50%;
+        display: inherit;
+        flex-direction: column;
+        gap: 20px;
+        .author-section {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            a {
+                color: var(--primary-color);
+                text-decoration: none;
+            }
+        }
+        .catagory-section,
+        .staus-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            div {
+                display: inherit;
+                gap: 4px;
+                a {
+                    color: var(--primary-color);
+                    text-decoration: none;
+                }
+                p {
+                    font-weight: 600;
+                }
+            }
+            & > p {
+                color: var(--primary-color);
+            }
+        }
+        .price-section {
+            h2 {
+                color: crimson;
+            }
+            div {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                span {
+                    position: relative;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 100%;
+                        top: 46%;
+                        left: 0;
+                        border-bottom: 2px solid #000;
+                    }
+                }
+            }
+        }
+        .quantity-section {
+            display: inherit;
+            flex-direction: column;
+            gap: 10px;
+            div {
+                gap: 14px;
+                display: inherit;
+                align-items: center;
+            }
+        }
+        .btn-action-section {
+            display: inherit;
+            gap: 20px;
+            .btn-buy {
+                color: #fff;
+                font-weight: 500;
+                background-color: coral;
+            }
+            .btn-add-cart {
+                color: #fff;
+                font-weight: 500;
+                background-color: cornflowerblue;
+            }
+        }
+    }
+}

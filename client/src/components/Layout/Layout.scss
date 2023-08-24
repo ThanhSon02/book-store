@@ -1,0 +1,25 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    .header {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+    }
+    .layout {
+        margin: 8px 32px;
+        display: flex;
+        flex-direction: column;
+    }
+    .footer {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 100%;
+        bottom: 0;
+        z-index: 20;
+    }
+}

@@ -1,0 +1,183 @@
+export const catagory = [
+    {
+        id: 0,
+        dept: 0,
+        title: "Sách chính trị - xã hội",
+        href: "/",
+        child: [
+            {
+                id: 0,
+                dept: 1,
+                title: "Chính trị - Tư tưởng",
+                child: undefined,
+            },
+            {
+                id: 1,
+                dept: 1,
+                title: "Chủ tịch Hồ Chí Minh",
+                child: undefined,
+            },
+            {
+                id: 2,
+                dept: 1,
+                title: "Những vấn đề quốc tế",
+                child: undefined,
+            },
+            {
+                id: 3,
+                dept: 1,
+                title: "Văn hoá - Xã hội",
+                child: undefined,
+            },
+            {
+                id: 4,
+                dept: 1,
+                title: "Sách tôn giáo",
+                child: undefined,
+            },
+            {
+                id: 5,
+                dept: 1,
+                title: "Sách lịch sử",
+                child: [
+                    {
+                        id: 0,
+                        dept: 2,
+                        title: "Các nền văn hoá",
+                        child: undefined,
+                    },
+                    {
+                        id: 1,
+                        dept: 2,
+                        title: "Sự kiện lịch sử",
+                        child: undefined,
+                    },
+                    {
+                        id: 2,
+                        dept: 2,
+                        title: "Lịch sử Việt Nam",
+                        child: undefined,
+                    },
+                ],
+            },
+            {
+                id: 6,
+                dept: 1,
+                title: "Pháp luật",
+                child: undefined,
+            },
+        ],
+    },
+    {
+        id: 1,
+        dept: 0,
+        title: "Sách Khoa học - Công nghệ",
+        href: "/",
+        child: [
+            {
+                id: 0,
+                dept: 1,
+                title: "Cơ khí, chế tạo Máy",
+                child: undefined,
+            },
+            {
+                id: 1,
+                dept: 1,
+                title: "Xây dựng, kiến trúc",
+                child: undefined,
+            },
+            {
+                id: 2,
+                dept: 1,
+                title: "Điện - Điện tử",
+                child: undefined,
+            },
+            {
+                id: 3,
+                dept: 1,
+                title: "Y - dược",
+                child: undefined,
+            },
+            {
+                id: 4,
+                dept: 1,
+                title: "Môi trường",
+                child: undefined,
+            },
+            {
+                id: 5,
+                dept: 1,
+                title: "Địa lý, thiên văn",
+                child: undefined,
+            },
+            {
+                id: 6,
+                dept: 1,
+                title: "Tạp chí khoa học",
+                child: undefined,
+            },
+            {
+                id: 7,
+                dept: 1,
+                title: "Công nghệ thông tin",
+                child: undefined,
+            },
+            {
+                id: 8,
+                dept: 1,
+                title: "Khoa học tự nhiên",
+                child: undefined,
+            },
+            {
+                id: 9,
+                dept: 1,
+                title: "Chuyển đổi số",
+                child: undefined,
+            },
+        ],
+    },
+    {
+        id: 2,
+        dept: 0,
+        title: "Sách Quản lý - Kinh tế",
+        href: "/",
+        child: [
+            {
+                id: 0,
+                dept: 1,
+                title: "Quản trị - Kinh doanh",
+                child: undefined,
+            },
+            {
+                id: 1,
+                dept: 1,
+                title: "Doanh nhân",
+                child: undefined,
+            },
+            {
+                id: 2,
+                dept: 1,
+                title: "Marketing",
+                child: undefined,
+            },
+            {
+                id: 3,
+                dept: 1,
+                title: "Start-up",
+                child: undefined,
+            },
+            {
+                id: 4,
+                dept: 1,
+                title: "Quản lý nhà nước",
+                child: undefined,
+            },
+            {
+                id: 5,
+                dept: 1,
+                title: "Sách kinh tế",
+                child: undefined,
+            },
+        ],
+    },
+];

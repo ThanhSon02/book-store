@@ -1,0 +1,107 @@
+.category-content {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    position: relative;
+    .category-box {
+        position: fixed;
+        top: 160px;
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        border-right: 1px solid #ddd;
+        .category-option {
+            padding: 6px 10px;
+            overflow: auto;
+            height: 450px;
+        }
+        ul {
+            list-style: none;
+            overflow-x: auto;
+            li {
+                cursor: pointer;
+                padding: 8px 0;
+                div {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+            }
+        }
+        .list-dept-0 {
+            .active-sub-catagory {
+                color: brown;
+            }
+            .active-sub-catagory.disable {
+                color: #000;
+            }
+            .active-sub-catagory.active + .list-dept-1 {
+                display: block;
+            }
+            .active-sub-catagory .arrow-icon {
+                transform: rotate(180deg);
+            }
+
+            .active-sub-catagory.disable + .list-dept-1 {
+                display: none;
+            }
+            .active-sub-catagory.disable .arrow-icon {
+                transform: rotate(0);
+            }
+            .list-dept-1 {
+                margin-top: 8px;
+                .item-dept-1 {
+                    padding: 6px;
+                }
+            }
+        }
+        .price {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 16px;
+            input {
+                margin-top: 8px;
+                width: 94px;
+                padding: 6px 8px;
+                border: 1px solid #ccc;
+                border-radius: 2px;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                -ms-border-radius: 2px;
+                -o-border-radius: 2px;
+            }
+        }
+        .rating {
+            margin-top: 16px;
+            select {
+                margin-top: 10px;
+                width: 100%;
+                padding: 6px;
+                font-size: 16px;
+            }
+        }
+        .author {
+            margin-top: 16px;
+            div {
+                input {
+                    padding: 6px;
+                }
+                display: flex;
+                gap: 6px;
+                align-items: center;
+            }
+        }
+    }
+    .category-result {
+        flex: 1;
+        margin-left: 300px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+    .catagory-btn {
+        background-color: var(--primary-color);
+        color: #fff;
+        font-weight: 600;
+    }
+}

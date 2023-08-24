@@ -1,0 +1,11 @@
+.profile-detail {
+    background-color: #f5f5fa;
+    width: 100%;
+    padding: 10px;
+    .ant-switch.ant-switch-checked {
+        background-color: var(--primary-color) !important;
+    }
+    .ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+        background-color: var(--primary-color) !important;
+    }
+}

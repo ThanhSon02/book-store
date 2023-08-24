@@ -1,0 +1,12 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 20px;
+
+    .sologan {
+        font-size: 24px;
+    }
+}

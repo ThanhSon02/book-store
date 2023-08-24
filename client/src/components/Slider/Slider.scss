@@ -1,0 +1,42 @@
+@import "slick-carousel/slick/slick.scss";
+@import "slick-carousel/slick/slick-theme.scss";
+.slider {
+    grid-column: span 4;
+    .slider-img {
+        width: 100%;
+        object-fit: fill;
+    }
+}
+
+.book-slider {
+    display: flex;
+    flex-direction: column;
+    .title {
+        font-weight: bold;
+        margin: 32px 0 16px;
+    }
+
+    .booklist-link {
+        text-align: end;
+    }
+    .slick-track {
+        display: flex;
+        gap: 20px;
+    }
+}
+
+.slick-prev {
+    left: -30px;
+    &::before {
+        color: black;
+        font-size: 32px;
+    }
+}
+
+.slick-next {
+    right: -20px;
+    &::before {
+        color: black;
+        font-size: 32px;
+    }
+}
