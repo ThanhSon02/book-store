@@ -1,25 +1,15 @@
 import "./Header.scss";
-import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { UserOutlined } from "@ant-design/icons";
 import Search from "antd/es/input/Search";
-import { Avatar, Badge, Button, Dropdown, Space } from "antd";
+import { Avatar, Badge, Button, Space } from "antd";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import { useSelector } from "react-redux";
-const items = [
-    {
-        key: "1",
-        label: <Link to="/login">Login</Link>,
-    },
-    {
-        key: "2",
-        label: <Link to="/register">Register</Link>,
-    },
-];
 
 function Header() {
     const cartList = useSelector((state) => state.cart.cartList);
-    const isLogin = useSelector((state) => state.user.isLogin);
+    const userLogin = useSelector((state) => state.user.login.user);
     const onSearch = (value) => {
         console.log(value);
     };
@@ -42,7 +32,7 @@ function Header() {
                             shape="circle"
                             icon={<AiOutlineUser />}></Button>
                     </Dropdown> */}
-                    {isLogin ? (
+                    {userLogin !== null ? (
                         <Space>
                             <Link to={"/user/profile/info"}>
                                 <Avatar

@@ -2,25 +2,17 @@ import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
 import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
-import axiosInstance from "../../../axios/axios";
-import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../../redux/Slice/authSlice";
+
 function Login() {
     const navigate = useNavigate();
-    const handleLoginForm = async (value) => {
-        await axiosInstance
-            .post("/auth/login", value)
-            .then((res) => {
-                toast.success(res.data.message);
-                sessionStorage.setItem(
-                    "accessToken",
-                    JSON.stringify(res.data.accessToken)
-                );
-                navigate("/");
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+    const dispatch = useDispatch();
+
+    const handleLoginForm = (loginInfo) => {
+        dispatch(loginUser({ loginInfo, navigate }));
     };
+
     return (
         <div className="login-container">
             <Form

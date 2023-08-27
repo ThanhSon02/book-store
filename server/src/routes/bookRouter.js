@@ -1,10 +1,9 @@
 const express = require("express");
-const multer = require("multer");
-const upload = multer({ dest: "./upload" });
-const router = express.Router();
 
+const bookRouter = express.Router();
 const bookController = require("../controllers/bookController");
+const uploadFile = require("../middleware/uploadImage");
 
-router.post("/upload", upload.single("img"), bookController.postFile);
+bookRouter.post("/add_book", uploadFile.single("img"), bookController.addBook);
 
-module.exports = router;
+module.exports = bookRouter;

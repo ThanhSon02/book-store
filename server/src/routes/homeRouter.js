@@ -1,10 +1,10 @@
 const express = require("express");
-const router = express.Router();
+const homeRouter = express.Router();
 
 const homeSiteController = require("../controllers/homeSiteController");
-const verifyAccessToken = require("../middleware/verifyAccessToken.middleware");
+const verifyAccessToken = require("../middleware/verifyToken");
 
-router.get("/addbook", homeSiteController.insertBook);
-router.get("/", verifyAccessToken, homeSiteController.index);
+homeRouter.get("/addbook", homeSiteController.insertBook);
+homeRouter.get("/", verifyAccessToken, homeSiteController.index);
 
-module.exports = router;
+module.exports = homeRouter;

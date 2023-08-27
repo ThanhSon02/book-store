@@ -1,11 +1,12 @@
 const jwt = require("jsonwebtoken");
 
-const verifyAccessToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
     const token = req.body.accessToken;
+    console.log(req.headers);
     if (token) {
         jwt.verify(token, process.env.JWT_ACCESS_KEY, (error, user) => {
             if (error) {
-                return res.status(403).json({
+                res.status(403).json({
                     status: 403,
                     message: "Token isn't valid!",
                 });
@@ -14,11 +15,11 @@ const verifyAccessToken = (req, res, next) => {
             next();
         });
     } else {
-        return res.status(401).json({
+        res.status(401).json({
             status: 401,
             message: "You're not authenticated!",
         });
     }
 };
 
-module.exports = verifyAccessToken;
+module.exports = verifyToken;

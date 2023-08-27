@@ -1,7 +1,7 @@
 const User = require("../models/userModal");
 
 class homeSiteController {
-    async index(req, res, next) {
+    async index(req, res) {
         const { userId } = req.body;
         const userData = await User.findOne({ userId });
         const { password, ...other } = userData._doc;
@@ -11,7 +11,7 @@ class homeSiteController {
             userData: { ...other },
         });
     }
-    async insertBook(req, res, next) {
+    async insertBook(req, res) {
         const result = await db.db.none(addBook, [
             3,
             "Cha giàu cha nghèo",

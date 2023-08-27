@@ -1,22 +1,17 @@
-import { Link } from "react-router-dom";
-import "./Register.scss";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Form, Input } from "antd";
-import axiosInstance from "../../../axios/axios";
-import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import "./Register.scss";
+import { registerUser } from "../../../redux/Slice/authSlice";
+
 function Register() {
-    const handleRegisterForm = async (value) => {
-        await axiosInstance
-            .post("/auth/register", value)
-            .then((res) => {
-                if (res.isSuccess) {
-                    toast.success(res.message);
-                }
-            })
-            .catch((err) => {
-                toast.error(err);
-                console.log(err);
-            });
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleRegisterForm = (registerInfo) => {
+        dispatch(registerUser({ registerInfo, navigate }));
     };
+
     return (
         <div className="register-container">
             <Form
@@ -69,8 +64,7 @@ function Register() {
                             required: true,
                             message: "Please input your password!",
                         },
-                    ]}
-                    hasFeedback>
+                    ]}>
                     <Input.Password />
                 </Form.Item>
 

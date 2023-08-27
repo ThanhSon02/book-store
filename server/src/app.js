@@ -3,8 +3,9 @@ const dotenv = require("dotenv");
 const app = express();
 const bodyParser = require("body-parser");
 const cloudinary = require("cloudinary");
-const route = require("./routes");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const route = require("./routes");
 const port = process.env.PORT || 3001;
 const db = require("./db/database");
 
@@ -18,7 +19,8 @@ cloudinary.config({
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({ credentials: true }));
 
 // Connect to db
 db.connectDB();

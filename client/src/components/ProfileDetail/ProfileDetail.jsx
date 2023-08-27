@@ -1,11 +1,8 @@
-import { Button, Form, Input, Switch, TreeSelect, Upload, message } from "antd";
-import {
-    PlusOutlined,
-    LoadingOutlined,
-    UploadOutlined,
-} from "@ant-design/icons";
+import { Button, Form, Input, Switch, TreeSelect, Upload } from "antd";
+import { PlusOutlined, LoadingOutlined } from "@ant-design/icons";
 import "./ProfileDetail.scss";
 import { useState } from "react";
+import axiosInstance from "../../axios/axios";
 
 const treeData = [
     {
@@ -51,7 +48,16 @@ function ProfileDetail() {
 
     const handleSubmitForm = (value) => {
         console.log(value);
+        axiosInstance
+            .post("/user/profile/info/update", value)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
+
     return (
         <div className="profile-detail">
             <div>
