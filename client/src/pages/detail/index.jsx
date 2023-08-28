@@ -18,7 +18,7 @@ function Detail() {
         bookType: "Sách in",
         price: 168000,
         discount: 20,
-        stock: "Còn hàng",
+        stock: 20,
     };
 
     return (

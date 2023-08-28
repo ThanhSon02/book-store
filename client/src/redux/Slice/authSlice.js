@@ -13,7 +13,7 @@ const initialState = {
 };
 
 const authSlice = createSlice({
-    name: "user",
+    name: "auth",
     initialState,
     extraReducers: (builder) => {
         builder
@@ -40,6 +40,7 @@ export const loginUser = createAsyncThunk(
             const res = await axiosInstance.post("/auth/login", loginInfo);
             navigate("/");
             toast.success(res.data.message);
+            return res.data;
         } catch (error) {
             toast.error(error.response.data.message);
         }
@@ -63,4 +64,4 @@ export const registerUser = createAsyncThunk(
     }
 );
 
-export default authSlice.reducer;
+export default authSlice;
