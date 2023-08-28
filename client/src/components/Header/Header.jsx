@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 function Header() {
     const cartList = useSelector((state) => state.cart.cartList);
-    const userLogin = useSelector((state) => state.user.login.user);
+    const userLogin = useSelector((state) => state.auth.login.user);
     const onSearch = (value) => {
         console.log(value);
     };

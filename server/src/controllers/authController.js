@@ -66,7 +66,7 @@ class authController {
             },
             process.env.JWT_ACCESS_KEY,
             {
-                expiresIn: "5m",
+                expiresIn: "20s",
             }
         );
     };

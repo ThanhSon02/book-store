@@ -3,21 +3,22 @@ import "./BookDetail.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../../redux/Slice/cartSlice";
+import { addToCart } from "../../redux/Slice/cartSlice";
 
 /* eslint-disable react/prop-types */
 function BookDetail({ data }) {
-    const [quantity, setQuantity] = useState(1);
-    const isLogin = useSelector((state) => state.user.isLogin);
+    const user = useSelector((state) => state.auth.login.user);
     const dispatch = useDispatch();
+
+    const [quantity, setQuantity] = useState(1);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const onIncrease = () => {
         setQuantity(quantity + 1);
     };
     const onDecrease = () => {
         setQuantity(quantity - 1);
     };
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -32,15 +33,22 @@ function BookDetail({ data }) {
     };
 
     const handleAddToCart = () => {
-        if (isLogin) {
-            dispatch(addToCart(data));
+        if (user) {
+            const { id, bookImg, bookTitle, price, discount, stock } = data;
+            dispatch(
+                addToCart({
+                    id,
+                    bookImg,
+                    bookTitle,
+                    price,
+                    discount,
+                    stock,
+                    quantity,
+                })
+            );
         } else {
             showModal();
         }
-    };
-
-    const test = () => {
-        dispatch(removeFromCart(data));
     };
 
     return (
@@ -91,9 +99,7 @@ function BookDetail({ data }) {
                     </div>
                 </div>
                 <div className="btn-action-section">
-                    <Button onClick={test} className="btn-buy">
-                        Mua ngay
-                    </Button>
+                    <Button className="btn-buy">Mua ngay</Button>
                     <Button onClick={handleAddToCart} className="btn-add-cart">
                         Thêm vào giỏ hàng
                     </Button>

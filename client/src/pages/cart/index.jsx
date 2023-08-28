@@ -4,11 +4,14 @@ import {
     SmileOutlined,
     SolutionOutlined,
 } from "@ant-design/icons";
-import "./cart_page.scss";
-import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
 import EmptyProfileOrder from "../../components/EmptyProfileOrder/EmptyProfileOrder";
+import { useSelector } from "react-redux";
+import "./cart_page.scss";
+import CartItrem from "../../components/CartItem/CartItem";
 
 function CartPage() {
+    const cartList = useSelector((state) => state.cart.cartList);
+
     return (
         <div className="cart-page">
             <div className="cart-content">
@@ -33,39 +36,14 @@ function CartPage() {
                         },
                     ]}
                 />
-                {(
-                    <div className="cart-list">
-                        <h2 className="cart-title">Giỏ hàng</h2>
-                        <div className="cart-item">
-                            <div className="cart-item-product">
-                                <img
-                                    className="cart-item-img"
-                                    src="/order_card.jpg"
-                                    width={80}
-                                    height={80}
-                                />
-                                <div className="cart-item-title">
-                                    <h4>Nhà giả kim</h4>
-                                </div>
-                            </div>
-                            <div className="cart-item-unit">
-                                <span>80000đ</span>
-                                <span>60000đ</span>
-                            </div>
-                            <div className="cart-item-quantity">
-                                <button>-</button>
-                                <input value={1} />
-                                <button>+</button>
-                            </div>
-                            <div className="cart-item-price">
-                                <span>60000đ</span>
-                            </div>
-                            <div className="cart-item-delete-btn">
-                                <ButtonCustom>Xoá</ButtonCustom>
-                            </div>
-                        </div>
-                    </div>
-                ) || <EmptyProfileOrder />}
+                <h2 className="cart-title">Giỏ hàng</h2>
+                {cartList.length === 0 ? (
+                    <EmptyProfileOrder />
+                ) : (
+                    cartList.map((cartItem) => (
+                        <CartItrem key={cartItem.id} data={cartItem} />
+                    ))
+                )}
             </div>
         </div>
     );
