@@ -1,13 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
 import "./profile_page.scss";
 import { BiSolidUserDetail, BiSolidDetail } from "react-icons/bi";
-import { useEffect } from "react";
 
 function Profile() {
-    // const useEffect(() => {
-
-    // }, [])
-
     return (
         <div className="page-container">
             <nav className="side-bar">

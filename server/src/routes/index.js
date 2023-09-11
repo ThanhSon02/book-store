@@ -1,13 +1,13 @@
-const homeSiteRouter = require("./homeRouter");
-const userRouter = require("./authRouter");
+const userRouter = require("./userRouter");
 const bookRouter = require("./bookRouter");
 const authRouter = require("./authRouter");
+const orderRouter = require("./orderRouter");
 
 function route(app) {
-    app.use("profile", userRouter);
-    app.use("/book", bookRouter);
-    app.use("/auth", authRouter);
-    app.use("/", homeSiteRouter);
+    app.use("/api/v1/order", orderRouter);
+    app.use("/api/v1/user", userRouter);
+    app.use("/api/v1/book", bookRouter);
+    app.use("/api/v1/auth", authRouter);
 }
 
 module.exports = route;

@@ -13,10 +13,11 @@ function Layout() {
             <Footer className="footer" />
             <ToastContainer
                 position="bottom-right"
-                autoClose={5000}
-                hideProgressBar={false}
+                autoClose={1000}
+                hideProgressBar={true}
                 newestOnTop={false}
                 rtl={false}
+                pauseOnHover={false}
                 draggable
                 theme="colored"
             />

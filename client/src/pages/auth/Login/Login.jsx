@@ -1,9 +1,9 @@
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import "./Login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../../redux/Slice/authSlice";
+import { loginUser } from "../../../service/userService";
 
 function Login() {
     const navigate = useNavigate();
@@ -58,13 +58,6 @@ function Login() {
                         type="password"
                         placeholder="Password"
                     />
-                </Form.Item>
-                <Form.Item>
-                    <Form.Item name="remember" valuePropName="checked" noStyle>
-                        <Checkbox className="checkbox-remember-password">
-                            Remember me
-                        </Checkbox>
-                    </Form.Item>
                 </Form.Item>
 
                 <Form.Item>
