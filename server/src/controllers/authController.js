@@ -9,7 +9,7 @@ class authController {
             const { name, email, password, phone } = req.body;
             const userEmail = await User.findOne({ email });
             if (userEmail) {
-                res.status(403).json({
+                return res.status(403).json({
                     message: "The email is exis!",
                 });
             }
@@ -40,6 +40,7 @@ class authController {
             if (!user) {
                 return res.status(401).json({
                     message: "User doesn't exist!",
+                    // userInfo: null,
                 });
             }
             const validPassword = bcrypt.compareSync(password, user.password);
@@ -66,9 +67,17 @@ class authController {
             },
             process.env.JWT_ACCESS_KEY,
             {
-                expiresIn: "20s",
+                expiresIn: "2d",
             }
         );
+    };
+
+    // Logout
+    logout = async (req, res) => {
+        res.clearCookie("refreshToken");
+        res.status(200).json({
+            message: "Logout successfull!",
+        });
     };
 }
 

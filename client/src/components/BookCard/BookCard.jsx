@@ -1,38 +1,51 @@
+/* eslint-disable react/prop-types */
 import { Rating } from "@mui/material";
-import { useState } from "react";
+import { Button } from "antd";
 import "./BookCard.scss";
 import { useNavigate } from "react-router-dom";
-// eslint-disable-next-line react/prop-types
-function BookCart({ bookId, img, title, author, currentRating, price }) {
+import priceWithCommas from "../../util/priceWithCommas";
+
+function BookCard({
+    bookID,
+    bookTitle,
+    bookImg,
+    bookAuthor,
+    bookRating,
+    bookDesc,
+    bookPrice,
+}) {
     const navigate = useNavigate();
-    const [rating, setRating] = useState();
-    const onBookCartClick = () => {
-        navigate(`/detail/${bookId}`);
+    const handleClick = () => {
+        navigate(`/detail/${bookID}`);
     };
+
     return (
-        <div className="container">
-            <img
-                className="book-img"
-                src={img}
-                alt="book 1"
-                onClick={onBookCartClick}
-            />
-            <h1 className="book-title" onClick={onBookCartClick}>
-                {title}
-            </h1>
-            <span className="book-author">{author}</span>
-            <div className="rating">
-                <Rating
-                    name="simple-controlled"
-                    value={rating || currentRating}
-                    onChange={(event, newRating) => {
-                        setRating(newRating);
-                    }}
-                />
+        <div onClick={handleClick} className="book-card">
+            <div onClick={handleClick} className="book-img">
+                <img src={bookImg} />
             </div>
-            <p className="price">{price + "đ"}</p>
+            <div className="book-card-info">
+                <div onClick={handleClick} className="book-title">
+                    <h3>{bookTitle}</h3>
+                </div>
+                <h3 className="book-author">
+                    <a>{bookAuthor}</a>
+                </h3>
+                <div className="book-rating">
+                    <Rating readOnly size="small" value={bookRating} />
+                </div>
+                <div className="book-desc">
+                    <div dangerouslySetInnerHTML={{ __html: bookDesc }}></div>
+                </div>
+                <div className="book-card-price">
+                    <span>{priceWithCommas(bookPrice)} đ</span>
+                </div>
+                <Button onClick={handleClick} className="book-card-btn">
+                    Chi tiết
+                </Button>
+            </div>
         </div>
     );
 }
 
-export default BookCart;
+export default BookCard;

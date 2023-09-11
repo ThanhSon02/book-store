@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Form, Input } from "antd";
 import { useDispatch } from "react-redux";
 import "./Register.scss";
-import { registerUser } from "../../../redux/Slice/authSlice";
+import { registerUser } from "../../../service/userService";
 
 function Register() {
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ function Register() {
                 className="register-form"
                 onFinish={handleRegisterForm}>
                 <Form.Item
-                    name="yourname"
+                    name="name"
                     label="Your Name"
                     rules={[
                         {

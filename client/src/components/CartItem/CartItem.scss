@@ -1,60 +1,55 @@
-.cart-list {
-    .cart-item {
-        display: flex;
-        justify-content: space-between;
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px 20px;
+    background-color: var(--background-color);
+    margin-bottom: 20px;
+    .cart-item-product {
+        display: inherit;
+        flex: 1;
         align-items: center;
-        gap: 60px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 10px 20px;
-        background-color: var(--background-color);
-        margin-bottom: 20px;
-        .cart-item-product {
-            display: inherit;
-            flex: 1;
+        gap: 20px;
+        .cart-item-img {
+            width: 60px;
+            aspect-ratio: 2/3;
+        }
+    }
+    .cart-item-unit {
+        display: inherit;
+        gap: 20px;
+        span:last-child {
+            font-weight: 700;
+        }
+        .old-price {
+            color: #747171;
+            text-decoration: line-through;
+        }
+    }
+    .cart-item-quantity {
+        display: inherit;
+        align-items: center;
+        gap: 6px;
+        div,
+        button {
+            display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content: center;
+            background-color: #fff;
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border: 1px solid #000;
+            border-radius: 3px;
+            cursor: pointer;
         }
-        .cart-item-unit {
-            display: inherit;
-            gap: 20px;
-            span:last-child {
-                font-weight: 700;
-            }
-            span:first-child {
-                position: relative;
-                color: #747171;
-                &::after {
-                    content: "";
-                    position: absolute;
-                    border-bottom: 2px solid #000;
-                    width: 100%;
-                    left: 0;
-                    top: 10px;
-                }
-            }
-        }
-        .cart-item-quantity {
-            display: inherit;
-            align-items: center;
-            gap: 6px;
-            div,
-            button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #fff;
-                width: 32px;
-                height: 32px;
-                font-size: 16px;
-                font-weight: 600;
-                border: 1px solid #000;
-                border-radius: 3px;
-                cursor: pointer;
-            }
-        }
-        .cart-item-price {
-            font-weight: bold;
-        }
+    }
+    .cart-item-price {
+        font-weight: bold;
+        color: crimson;
     }
 }

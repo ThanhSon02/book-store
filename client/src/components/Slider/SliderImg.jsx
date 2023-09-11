@@ -4,21 +4,21 @@ import "./Slider.scss";
 function SliderImg() {
     const settings = {
         infinite: true,
-        speed: 500,
+        speed: 600,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
         arrows: false,
     };
     return (
-        <Slider className="slider" {...settings}>
-            <img className="slider-img" src="/slider.png" alt="photo" />
-            <img className="slider-img" src="/slider_1.png" alt="photo" />
-            <img className="slider-img" src="/slider.png" alt="photo" />
-            <img className="slider-img" src="/slider_1.png" alt="photo" />
-            <img className="slider-img" src="/slider.png" alt="photo" />
-            <img className="slider-img" src="/slider_1.png" alt="photo" />
-        </Slider>
+        <div>
+            <Slider className="slider" {...settings}>
+                <img className="slider-img" src="/2419_new.png" alt="photo" />
+                <img className="slider-img" src="/2512_new.png" alt="photo" />
+                <img className="slider-img" src="/2518_new.png" alt="photo" />
+                <img className="slider-img" src="/2533_new.png" alt="photo" />
+            </Slider>
+        </div>
     );
 }
 

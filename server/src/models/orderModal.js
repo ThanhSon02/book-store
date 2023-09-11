@@ -4,37 +4,32 @@ const orderSchema = new mongoose.Schema(
     {
         orderItems: [
             {
-                name: { type: String, require: true },
-                amount: { type: Number, require: true },
-                image: { type: String, require: true },
-                price: { type: Number, require: true },
-                discount: { type: Number },
-                product: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: "Book",
-                    require: true,
+                book: {
+                    book_name: { type: String, require: true },
+                    price: { type: Number, require: true },
+                    in_stock: { type: Number, require: true },
+                    book_img: { type: String },
+                    discount: Number,
                 },
+                quantity: { type: Number, require: true, default: 1 },
             },
         ],
-        shippingAddress: {
-            fullName: { type: String, required: true },
-            address: { type: String, required: true },
-            city: { type: String, required: true },
-            phone: { type: Number, required: true },
-        },
         paymentMethod: { type: String, required: true },
-        itemsPrice: { type: Number, required: true },
         shippingPrice: { type: Number, required: true },
         totalPrice: { type: Number, required: true },
+        totalOrder: { type: Number, require: true },
         user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-            required: true,
+            _id: {
+                type: String,
+                require: true,
+            },
+            name: { type: String },
+            email: { type: String, required: true, unique: true },
+            phone: { type: Number, require: true },
+            address: { type: String, required: true },
         },
         isPaid: { type: Boolean, default: false },
-        paidAt: { type: Date },
         isDelivered: { type: Boolean, default: false },
-        deliveredAt: { type: Date },
     },
     {
         timestamps: true,

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    cartList: JSON.parse(localStorage.getItem("cartList")) || [],
+    cartList: [],
 };
 
 const cartSlice = createSlice({
@@ -10,52 +10,49 @@ const cartSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             const item = action.payload;
-            const findItem = state.cartList.find((i) => item.id === i.id);
+            const findItem = state.cartList.find(
+                (i) => item.book._id === i.book._id
+            );
             if (findItem) {
                 const newCart = {
                     ...state,
                     cartList: state.cartList.map((i) =>
-                        i.id === item.id ? item : i
+                        i.book._id === item.book._id ? item : i
                     ),
                 };
-                console.log(newCart);
-                localStorage.setItem(
-                    "cartList",
-                    JSON.stringify(newCart.cartList)
-                );
+
                 return newCart;
             } else {
                 const newCart = {
                     ...state,
                     cartList: [...state.cartList, item],
                 };
-                console.log(newCart);
-                localStorage.setItem(
-                    "cartList",
-                    JSON.stringify(newCart.cartList)
-                );
                 return newCart;
             }
         },
 
         removeFromCart: (state, action) => {
             const item = action.payload;
-            const findItem = state.cartList.find((i) => i.id === item.id);
+            const findItem = state.cartList.find(
+                (i) => i.book._id === item.book._id
+            );
             if (findItem) {
-                const newList = state.cartList.filter((i) => i.id !== item.id);
+                const newList = state.cartList.filter(
+                    (i) => i.book._id !== item.book._id
+                );
                 const newCart = {
                     ...state,
                     cartList: newList,
                 };
-                localStorage.setItem(
-                    "cartList",
-                    JSON.stringify(newCart.cartList)
-                );
                 return newCart;
             }
+        },
+
+        clearCart: (state) => {
+            state.cartList = [];
         },
     },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
 export default cartSlice;

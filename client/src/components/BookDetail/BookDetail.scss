@@ -1,96 +1,140 @@
-.book-detai-container {
+.book-detail-container {
     display: flex;
-    width: 100%;
-    .img-section {
-        width: 50%;
-        .img {
-            margin: 0 auto;
-            width: 400px;
-            height: 500px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            margin-bottom: 24px;
-        }
-    }
-    .detail-section {
-        width: 50%;
-        display: inherit;
-        flex-direction: column;
-        gap: 20px;
-        .author-section {
+    flex-direction: column;
+    width: 1200px;
+    margin: 32px 0;
+    gap: 20px;
+    .buy-section {
+        border-radius: 3px;
+        padding: 40px;
+        background-color: #fff;
+        width: 100%;
+        display: flex;
+        gap: 54px;
+        .buy-left-section {
             display: flex;
             align-items: center;
-            gap: 4px;
-            a {
-                color: var(--primary-color);
-                text-decoration: none;
+            justify-content: center;
+            img {
+                width: 260px;
+                aspect-ratio: 2/3;
             }
         }
-        .catagory-section,
-        .staus-section {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            div {
-                display: inherit;
-                gap: 4px;
-                a {
-                    color: var(--primary-color);
-                    text-decoration: none;
-                }
-                p {
-                    font-weight: 600;
-                }
+        .buy-right-section {
+            .name-box {
+                font-weight: 500;
+                padding-bottom: 16px;
             }
-            & > p {
-                color: var(--primary-color);
-            }
-        }
-        .price-section {
-            h2 {
-                color: crimson;
-            }
-            div {
+            .author-box,
+            .in-stock-box {
                 display: flex;
-                gap: 10px;
                 align-items: center;
-                span {
-                    position: relative;
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        width: 100%;
-                        top: 46%;
-                        left: 0;
-                        border-bottom: 2px solid #000;
+                gap: 12px;
+                padding-bottom: 8px;
+                span:nth-child(2) {
+                    font-weight: bold;
+                }
+            }
+            .rating-box {
+                padding-bottom: 8px;
+            }
+            .price-box {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 8px 0 16px;
+                .special-price {
+                    font-size: 32px;
+                    font-weight: 600;
+                    color: #c92127;
+                }
+                .old-price {
+                    font-size: 18px;
+                    margin-right: 14px;
+                    text-decoration: line-through;
+                }
+                .discount {
+                    padding: 6px;
+                    background-color: #c92127;
+                    border-radius: 4px;
+                    color: #fff;
+                    font-weight: bold;
+                }
+            }
+            .quantity-box {
+                display: flex;
+                align-items: center;
+                gap: 24px;
+                padding: 16px 0;
+                .quantity-box-label {
+                    font-weight: bold;
+                }
+                .quantity-box-block {
+                    display: inherit;
+                    align-items: center;
+                    border-radius: 4px;
+                    border: 1px solid #c1c1c1;
+                    justify-content: space-between;
+                    text-align: center;
+                    height: 32px;
+                    input {
+                        text-align: center;
+                        max-width: 32px;
+                        outline: none;
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+                    .btn-subtract {
+                        background-color: #fff;
+                        min-width: 32px;
+                        padding: 0 10px 0 14px;
+                        cursor: pointer;
+                    }
+                    .btn-add {
+                        background-color: #fff;
+                        min-width: 32px;
+                        padding: 0 14px 0 10px;
+                        cursor: pointer;
                     }
                 }
             }
-        }
-        .quantity-section {
-            display: inherit;
-            flex-direction: column;
-            gap: 10px;
-            div {
-                gap: 14px;
-                display: inherit;
-                align-items: center;
+            .buy-cart-box {
+                display: flex;
+                gap: 16px;
+                padding-top: 14px;
+                .btn-add-to-cart {
+                    border-color: var(--primary-color);
+                    color: var(--primary-color);
+                    font-weight: bold;
+                }
+                .buy-btn {
+                    background-color: var(--primary-color);
+                    color: #fff;
+                    font-weight: bold;
+                }
             }
         }
-        .btn-action-section {
-            display: inherit;
-            gap: 20px;
-            .btn-buy {
-                color: #fff;
-                font-weight: 500;
-                background-color: coral;
-            }
-            .btn-add-cart {
-                color: #fff;
-                font-weight: 500;
-                background-color: cornflowerblue;
-            }
+    }
+    .info-book-section {
+        background-color: #fff;
+        height: 100px;
+        border-radius: 3px;
+    }
+    .introduce-section {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 3px;
+        h2 {
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
+        .desc {
+            color: #242424;
+        }
+    }
+    .relate-book-section {
+        height: 100px;
+        border-radius: 3px;
+        background-color: #fff;
     }
 }

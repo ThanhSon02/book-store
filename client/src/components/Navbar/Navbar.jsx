@@ -1,30 +1,44 @@
 import { NavLink } from "react-router-dom";
 import "./Navbar.scss";
+import DropdownCategory from "../DropdownCategory/DropdownCategory";
 const links = [
     {
         id: 1,
-        title: "Sách in",
-        url: "/",
+        title: "Sách hot",
+        image: "/hot.png",
+        url: "/hot_book",
     },
     {
         id: 2,
-        title: "Sách điện tử",
-        url: "/digital_book",
+        title: "Sách bán chạy",
+        image: "/best-seller.png",
+        url: "/best_seller",
     },
     {
         id: 3,
-        title: "Nhà xuất bản",
-        url: "/publisher",
+        title: "Sách mới",
+        image: "/new.png",
+        url: "/new",
     },
     {
         id: 4,
-        title: "Tra cứu đơn hàng",
-        url: "/order",
+        title: "Tất cả sản phẩm",
+        image: "/all.png",
+        url: "/all",
     },
 ];
+
 function Navbar() {
     return (
-        <div className="nav-container">
+        <nav className="nav-container">
+            <DropdownCategory>
+                <div className="nav-item">
+                    <a className="nav-link">
+                        <img className="nav-link-icon" src="/menu.png" />
+                        <span>Danh mục</span>
+                    </a>
+                </div>
+            </DropdownCategory>
             {links.map((link) => (
                 <div key={link.id} className="nav-item">
                     <NavLink
@@ -32,11 +46,12 @@ function Navbar() {
                         className={({ isActive }) =>
                             isActive ? "active nav-link" : "nav-link"
                         }>
-                        {link.title}
+                        <img src={link.image} className="nav-link-icon" />
+                        <span>{link.title}</span>
                     </NavLink>
                 </div>
             ))}
-        </div>
+        </nav>
     );
 }
 

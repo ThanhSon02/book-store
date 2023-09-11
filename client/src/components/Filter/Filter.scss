@@ -1,0 +1,46 @@
+.filter-main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    .filter-title {
+        margin-bottom: 20px;
+    }
+    .filter-rating {
+        .filter-rating-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            .filter-rating-link {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    }
+    .filter-price {
+        .filter-price-box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            p {
+                color: #777;
+            }
+            .filter-price-input {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 6px;
+            }
+            .filter-price-btn {
+                width: 100%;
+            }
+        }
+    }
+    .filter-supplier {
+        .filter-supplier-box {
+            div {
+                gap: 6px;
+            }
+        }
+    }
+}

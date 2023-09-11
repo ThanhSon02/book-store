@@ -1,67 +1,44 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axiosInstance from "../../axios/axios";
-import { toast } from "react-toastify";
+import { createSlice } from "@reduxjs/toolkit";
+import { loginUser, logoutUser, updateUser } from "../../service/userService";
 
 const initialState = {
-    login: {
-        user: null,
-        status: "idle",
-    },
-    register: {
-        status: "idle",
-    },
+    auth: { userInfo: null, accessToken: null },
+    isLoading: false,
 };
 
 const authSlice = createSlice({
     name: "auth",
     initialState,
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(loginUser.pending, (state) => {
-                state.login.status = "loading";
+                state.isLoading = true;
             })
             .addCase(loginUser.fulfilled, (state, action) => {
-                state.login.status = "idle";
-                state.login.user = action.payload;
+                state.isLoading = false;
+                state.auth = action.payload;
             })
-            .addCase(registerUser.pending, (state) => {
-                state.register.status = "loading";
+            .addCase(loginUser.rejected, (state) => {
+                state.isLoading = false;
             })
-            .addCase(registerUser.fulfilled, (state) => {
-                state.register.status = "idle";
+            .addCase(logoutUser.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(logoutUser.fulfilled, (state) => {
+                state.isLoading = false;
+                state.auth.userInfo = null;
+                state.auth.accessToken = null;
+            })
+            .addCase(updateUser.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(updateUser.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.auth = action.payload;
             });
     },
 });
 
-export const loginUser = createAsyncThunk(
-    "auth/loginFetch",
-    async ({ loginInfo, navigate }) => {
-        try {
-            const res = await axiosInstance.post("/auth/login", loginInfo);
-            navigate("/");
-            toast.success(res.data.message);
-            return res.data;
-        } catch (error) {
-            toast.error(error.response.data.message);
-        }
-    }
-);
-
-export const registerUser = createAsyncThunk(
-    "auth/registerFetch",
-    async ({ registerInfo, navigate }) => {
-        try {
-            const res = await axiosInstance.post(
-                "/auth/register",
-                registerInfo
-            );
-            navigate("/login");
-            toast.success(res.data.message);
-            return res.data;
-        } catch (error) {
-            toast.error(error.response.data.message);
-        }
-    }
-);
-
+export const { updateInfo } = authSlice.actions;
 export default authSlice;
