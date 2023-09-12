@@ -2,11 +2,18 @@ import { useEffect, useState } from "react";
 import BookSlider from "../../components/Slider/BookSlider";
 import SliderImg from "../../components/Slider/SliderImg";
 import axiosInstance from "../../axios/axios";
+import { useDispatch } from "react-redux";
+import { getAllBook } from "../../service/bookService";
 
 function HomePage() {
     const [hotBook, setHotBook] = useState([]);
     const [bestSellerBook, setBestSellerBook] = useState([]);
     const [newBook, setNewBook] = useState([]);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllBook());
+    }, []);
 
     useEffect(() => {
         axiosInstance

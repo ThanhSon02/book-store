@@ -17,7 +17,9 @@ function PaypalPayment({ orderInfo, accessToken }) {
                 ...orderInfo,
                 isPaid: true,
             };
-            dispatch(createOrder({ orderInfo: newOrderInfo, accessToken }));
+            dispatch(
+                createOrder({ orderInfo: newOrderInfo, accessToken, dispatch })
+            );
             dispatch(clearCart());
             navigate("/user/profile/order");
         } else {

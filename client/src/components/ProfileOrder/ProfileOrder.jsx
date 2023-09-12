@@ -2,17 +2,19 @@ import { useEffect, useState } from "react";
 import EmptyProfileOrder from "../EmptyProfileOrder/EmptyProfileOrder";
 import ProfileOrderCard from "../ProfileOrderCard/ProfileOrderCard";
 import TabLayout from "../TabLayout/TabLayout";
-import { useSelector } from "react-redux";
-import axiosInstance from "../../axios/axios";
+import { useDispatch, useSelector } from "react-redux";
+import createAxiosJwt from "../../axios/createAxiosJWT";
 
 function ProfileOrder() {
     const user = useSelector((state) => state.auth.auth);
     const accessToken = user.accessToken;
+    const dispatch = useDispatch();
 
     const [userOrder, setUserOrder] = useState([]);
 
+    const axiosJWT = createAxiosJwt(accessToken, dispatch);
     useEffect(() => {
-        axiosInstance
+        axiosJWT
             .get("/order/get-my-order", {
                 headers: {
                     token: `Beare ${accessToken}`,

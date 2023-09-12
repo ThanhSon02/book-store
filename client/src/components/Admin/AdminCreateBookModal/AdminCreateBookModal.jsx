@@ -68,7 +68,7 @@ function AdminCreateBookModal({ formRef, form }) {
             ...formInfo,
             book_img: imgBase64,
         };
-        dispatch(createBook({ bookInfo, accessToken }));
+        dispatch(createBook({ bookInfo, accessToken, dispatch }));
         form.resetFields();
     };
     return (
