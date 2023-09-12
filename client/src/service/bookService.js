@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../axios/axios";
 import { toast } from "react-toastify";
+import createAxiosJwt from "../axios/createAxiosJWT";
 
 export const getAllBook = createAsyncThunk("books/getAll", async () => {
     try {
@@ -13,9 +14,10 @@ export const getAllBook = createAsyncThunk("books/getAll", async () => {
 
 export const createBook = createAsyncThunk(
     "books/create",
-    async ({ bookInfo, accessToken }) => {
+    async ({ bookInfo, accessToken, dispatch }) => {
         try {
-            const res = await axiosInstance.post("/book/create", bookInfo, {
+            const axiosJwt = createAxiosJwt(accessToken, dispatch);
+            const res = await axiosJwt.post("/book/create", bookInfo, {
                 headers: {
                     token: `Beare ${accessToken}`,
                 },
@@ -30,9 +32,11 @@ export const createBook = createAsyncThunk(
 
 export const deleteBook = createAsyncThunk(
     "books/delete",
-    async ({ bookID, accessToken }) => {
+    async ({ bookID, accessToken, dispatch }) => {
         try {
-            const res = await axiosInstance.delete("/book/delete_book", {
+            const axiosJwt = createAxiosJwt(accessToken, dispatch);
+
+            const res = await axiosJwt.delete("/book/delete_book", {
                 headers: {
                     token: `Beare ${accessToken}`,
                 },
@@ -50,17 +54,15 @@ export const deleteBook = createAsyncThunk(
 
 export const updateBook = createAsyncThunk(
     "books/update",
-    async ({ bookUpdate, accessToken }) => {
+    async ({ bookUpdate, accessToken, dispatch }) => {
         try {
-            const res = await axiosInstance.put(
-                "book/update_book",
-                bookUpdate,
-                {
-                    headers: {
-                        token: `Beare ${accessToken}`,
-                    },
-                }
-            );
+            const axiosJwt = createAxiosJwt(accessToken, dispatch);
+
+            const res = await axiosJwt.put("book/update_book", bookUpdate, {
+                headers: {
+                    token: `Beare ${accessToken}`,
+                },
+            });
             toast.success(res.data.message);
             return res.data;
         } catch (error) {

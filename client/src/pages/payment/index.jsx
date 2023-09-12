@@ -38,6 +38,7 @@ function PaymentPage() {
                     isDelivered: false,
                 },
                 accessToken,
+                dispatch,
             })
         );
         dispatch(clearCart());

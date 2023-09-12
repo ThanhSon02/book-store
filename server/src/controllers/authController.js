@@ -40,14 +40,20 @@ class authController {
             if (!user) {
                 return res.status(401).json({
                     message: "User doesn't exist!",
-                    // userInfo: null,
                 });
             }
             const validPassword = bcrypt.compareSync(password, user.password);
 
             if (user && validPassword) {
                 const accessToken = this.generateAccessToken(user);
+                const refreshToken = this.generateRefreshToken(user);
                 const { password, ...others } = user._doc;
+                res.cookie("refreshToken", refreshToken, {
+                    httpOnly: true,
+                    secure: false,
+                    path: "/",
+                    sameSite: "strict",
+                });
                 res.status(200).json({
                     message: "Login successfull!",
                     userInfo: { ...others },
@@ -59,6 +65,39 @@ class authController {
         }
     };
 
+    refreshToken = async (req, res) => {
+        const refreshToken = req.cookies.refreshToken;
+        if (!refreshToken) {
+            res.status(403).json({
+                message: "You are not authenticated",
+            });
+        } else {
+            jwt.verify(
+                refreshToken,
+                process.env.JWT_REFRESH_KEY,
+                (error, user) => {
+                    if (error) {
+                        console.log(err);
+                    }
+
+                    const newAccessToken = this.generateAccessToken(user);
+                    const newRefreshToken = this.generateRefreshToken(user);
+
+                    res.status(200)
+                        .cookie("refreshToken", refreshToken, {
+                            httpOnly: true,
+                            secure: false,
+                            sameSite: "strict",
+                        })
+                        .json({
+                            accessToken: newAccessToken,
+                            refreshToken: newRefreshToken,
+                        });
+                }
+            );
+        }
+    };
+
     generateAccessToken = (user) => {
         return jwt.sign(
             {
@@ -67,7 +106,20 @@ class authController {
             },
             process.env.JWT_ACCESS_KEY,
             {
-                expiresIn: "2d",
+                expiresIn: "3h",
+            }
+        );
+    };
+
+    generateRefreshToken = (user) => {
+        return jwt.sign(
+            {
+                id: user._id,
+                isAdmin: user.isAdmin,
+            },
+            process.env.JWT_REFRESH_KEY,
+            {
+                expiresIn: "30d",
             }
         );
     };
@@ -76,7 +128,7 @@ class authController {
     logout = async (req, res) => {
         res.clearCookie("refreshToken");
         res.status(200).json({
-            message: "Logout successfull!",
+            message: "Log Out successfull!",
         });
     };
 }

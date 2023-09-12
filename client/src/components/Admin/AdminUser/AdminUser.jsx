@@ -76,11 +76,11 @@ function AdminUser() {
     };
 
     useEffect(() => {
-        dispatch(getAllUser({ accessToken }));
+        dispatch(getAllUser({ accessToken, dispatch }));
     }, []);
 
     const handleDeleteUser = () => {
-        dispatch(deleteUser({ userID: rowSelected, accessToken }));
+        dispatch(deleteUser({ userID: rowSelected, accessToken, dispatch }));
         hideModalDelete();
     };
 

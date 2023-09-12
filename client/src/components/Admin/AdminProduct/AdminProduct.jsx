@@ -118,7 +118,9 @@ function AdminProduct() {
     };
 
     const handleDeleteBook = () => {
-        dispatch(deleteBook({ bookID: rowSelected._id, accessToken }));
+        dispatch(
+            deleteBook({ bookID: rowSelected._id, accessToken, dispatch })
+        );
         hideModalDelete();
     };
 

@@ -9,7 +9,11 @@ const initialState = {
 const authSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {},
+    reducers: {
+        updateAccessToken: (state, action) => {
+            state.auth.accessToken = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(loginUser.pending, (state) => {
@@ -40,5 +44,5 @@ const authSlice = createSlice({
     },
 });
 
-export const { updateInfo } = authSlice.actions;
+export const { updateAccessToken } = authSlice.actions;
 export default authSlice;

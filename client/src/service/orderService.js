@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axiosInstance from "../axios/axios";
 import { toast } from "react-toastify";
+import createAxiosJwt from "../axios/createAxiosJWT";
 
 export const createOrder = createAsyncThunk(
     "order/create",
-    async ({ orderInfo, accessToken }) => {
+    async ({ orderInfo, accessToken, dispatch }) => {
         try {
-            const res = await axiosInstance.post("order/create", orderInfo, {
+            const axiosJwt = createAxiosJwt(accessToken, dispatch);
+            const res = await axiosJwt.post("order/create", orderInfo, {
                 headers: {
                     token: `Beare ${accessToken}`,
                 },
@@ -21,9 +22,10 @@ export const createOrder = createAsyncThunk(
 
 export const getAllOrder = createAsyncThunk(
     "order/getAll",
-    async ({ accessToken }) => {
+    async ({ accessToken, dispatch }) => {
         try {
-            const res = await axiosInstance.get("/order/get-all-order", {
+            const axiosJwt = createAxiosJwt(accessToken, dispatch);
+            const res = await axiosJwt.get("/order/get-all-order", {
                 headers: {
                     token: `Beare ${accessToken}`,
                 },
