@@ -13,6 +13,9 @@ function route(app) {
     app.use("/api/v1/user", userRouter);
     app.use("/api/v1/book", bookRouter);
     app.use("/api/v1/auth", authRouter);
+    app.use("/", (req, res) => {
+        res.status(200).send("Hello World!!");
+    });
 }
 
 module.exports = route;

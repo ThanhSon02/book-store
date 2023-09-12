@@ -110,11 +110,12 @@ function Header() {
                                     Trở lại
                                 </Button>,
                                 <Button
-                                    key="link"
-                                    href="/login"
+                                    key="login"
                                     type="primary"
                                     onClick={handleOk}>
-                                    Tới trang đăng nhập
+                                    <Link to={"/login"}>
+                                        Tới trang đăng nhập
+                                    </Link>
                                 </Button>,
                             ]}>
                             <h3>Đăng nhập để truy cập giỏ hàng!</h3>
