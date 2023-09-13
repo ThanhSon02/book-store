@@ -13,11 +13,15 @@ function route(app) {
     app.use("/api/v1/user", userRouter);
     app.use("/api/v1/book", bookRouter);
     app.use("/api/v1/auth", authRouter);
-    app.use("/admin_account", (req, res) => {
+    app.get("/api/v1/admin_account", (req, res) => {
         res.status(200).json({
             admin: {
                 email: "admin@admin.com",
                 password: "123",
+            },
+            paypal: {
+                email: "sb-twua927331293@personal.example.com",
+                password: "?%FU/3*b",
             },
         });
     });
