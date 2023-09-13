@@ -46,7 +46,7 @@ function BookDetail({ data }) {
     };
 
     const handleAddToCart = () => {
-        if (user) {
+        if (user && data.in_stock >= quantity) {
             const { _id, book_img, book_name, price, discount, in_stock } =
                 data;
             dispatch(
@@ -64,13 +64,15 @@ function BookDetail({ data }) {
             );
             toast.success("Sản phẩm đã được thêm vào giỏ hàng");
             dispatch(cartCheckout());
-        } else {
+        } else if (!user) {
             showModal();
+        } else if (data.in_stock < quantity) {
+            toast.warn("Số lượng sản phẩm có sẵn không đủ!");
         }
     };
 
     const handleBuyNow = () => {
-        if (user && user.address) {
+        if (user && user.address && data.in_stock >= quantity) {
             const { _id, book_img, book_name, price, discount, in_stock } =
                 data;
             dispatch(
@@ -106,8 +108,10 @@ function BookDetail({ data }) {
             );
             toast.warn("Vui lòng cập nhật địa chỉ của bạn");
             navigate("/user/profile/info");
-        } else {
+        } else if (!user) {
             showModal();
+        } else if (data.in_stock < quantity) {
+            toast.warn("Số lượng sản phẩm có sẵn không đủ!");
         }
     };
 

@@ -17,6 +17,14 @@
             width: 100%;
             border-bottom: 1px solid #a3a3a3;
         }
+        .catagory-result-top-btn {
+            display: flex;
+            gap: 12px;
+            & > button {
+                color: red;
+                border-color: red;
+            }
+        }
     }
     .category-result-main {
         display: grid;
@@ -24,6 +32,12 @@
         gap: 20px;
         .book-item {
             grid-column: span 1;
+        }
+        .empty {
+            grid-column: span 1;
+            margin-top: 20px;
+            font-size: 24px;
+            text-align: center;
         }
     }
     .pagination {

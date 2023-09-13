@@ -7,12 +7,12 @@ import priceWithCommas from "../../util/priceWithCommas";
 
 function BookCard({
     bookID,
-    bookTitle,
-    bookImg,
-    bookAuthor,
-    bookRating,
-    bookDesc,
-    bookPrice,
+    bookTitle = "",
+    bookImg = "",
+    bookAuthor = "",
+    bookRating = 0,
+    bookDesc = "",
+    bookPrice = 0,
 }) {
     const navigate = useNavigate();
     const handleClick = () => {

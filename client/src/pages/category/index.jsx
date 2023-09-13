@@ -36,7 +36,6 @@ function CategoryPage() {
         axiosInstance
             .get(`/book/category/${categoryType}`)
             .then((result) => {
-                console.log("data: ", result);
                 setListBook(result.data.listBook);
             })
             .catch((error) => {

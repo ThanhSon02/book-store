@@ -5,7 +5,7 @@ import jwtDecode from "jwt-decode";
 
 const createAxiosJwt = (accessToken, dispatch) => {
     const axiosInstance = axios.create({
-        baseURL: "https://ts-book-store-server.onrender.com/api/v1",
+        baseURL: "http://localhost:3001/api/v1",
         headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Credentials": true,

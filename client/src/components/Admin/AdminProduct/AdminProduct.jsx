@@ -118,9 +118,7 @@ function AdminProduct() {
     };
 
     const handleDeleteBook = () => {
-        dispatch(
-            deleteBook({ bookID: rowSelected._id, accessToken, dispatch })
-        );
+        dispatch(deleteBook({ bookID: rowSelected._id, accessToken }));
         hideModalDelete();
     };
 
@@ -136,7 +134,6 @@ function AdminProduct() {
     const handleAddBook = () => {
         createFormRef.current.submit();
         if (!isLoading) {
-            form.resetFields();
             hideModalAdd();
         }
     };

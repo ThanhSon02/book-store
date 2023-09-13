@@ -10,7 +10,7 @@ function AdminOrder() {
     const accessToken = currentUser.accessToken;
 
     useEffect(() => {
-        dispatch(getAllOrder({ accessToken, dispatch }));
+        dispatch(getAllOrder({ accessToken }));
     }, []);
 
     const columns = [

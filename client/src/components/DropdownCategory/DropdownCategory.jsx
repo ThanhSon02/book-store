@@ -35,7 +35,7 @@ const items = [
         ),
     },
     {
-        key: "4",
+        key: "5",
         label: (
             <a style={{ fontWeight: 500 }} href="/category/literature-novels">
                 Văn học - Tiểu thuyết
@@ -43,7 +43,7 @@ const items = [
         ),
     },
     {
-        key: "4",
+        key: "6",
         label: (
             <a style={{ fontWeight: 500 }} href="/category/living-skill">
                 Kĩ năng sống
