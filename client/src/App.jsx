@@ -22,6 +22,7 @@ import All from "./pages/all_product";
 import CartPayment_Layout from "./components/CartPayment_Layout/CartPayment_Layout";
 import PaymentPage from "./pages/payment";
 import CategoryPage from "./pages/category";
+import AccountPage from "./pages/account";
 
 function App() {
     return (
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/new" element={<New />} />
                 <Route path="/all" element={<All />} />
                 <Route path="/category/:type" element={<CategoryPage />} />
+                <Route path="/account" element={<AccountPage />} />
                 <Route element={<ProtectedLayout />}>
                     <Route element={<Profile />}>
                         <Route
