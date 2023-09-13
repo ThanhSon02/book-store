@@ -9,7 +9,7 @@ function Logout() {
     const accessToken = useSelector((state) => state.auth.auth.accessToken);
 
     const handleLogout = () => {
-        dispatch(logoutUser({ accessToken, navigate, dispatch }));
+        dispatch(logoutUser({ accessToken, navigate }));
         dispatch(clearCart());
     };
 

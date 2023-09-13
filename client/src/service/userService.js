@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../axios/axios";
 import { toast } from "react-toastify";
-import createAxiosJwt from "../axios/createAxiosJWT";
 
 export const loginUser = createAsyncThunk(
     "auth/loginFetch",
@@ -37,11 +36,9 @@ export const registerUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk(
     "auth/logoutFetch",
-    async ({ accessToken, navigate, dispatch }) => {
+    async ({ accessToken, navigate }) => {
         try {
-            const axiosJwt = createAxiosJwt(accessToken, dispatch);
-
-            const res = await axiosJwt.post(
+            const res = await axiosInstance.post(
                 "/auth/logout",
                 {},
                 {
@@ -60,11 +57,9 @@ export const logoutUser = createAsyncThunk(
 
 export const getAllUser = createAsyncThunk(
     "user/getAllUser",
-    async ({ accessToken, dispatch }) => {
+    async ({ accessToken }) => {
         try {
-            const axiosJwt = createAxiosJwt(accessToken, dispatch);
-
-            const res = await axiosJwt.get("/user/get_all_user", {
+            const res = await axiosInstance.get("/user/get_all_user", {
                 headers: {
                     token: `Beare ${accessToken}`,
                 },
@@ -78,11 +73,9 @@ export const getAllUser = createAsyncThunk(
 
 export const deleteUser = createAsyncThunk(
     "user/deleteUser",
-    async ({ userID, accessToken, dispatch }) => {
+    async ({ userID, accessToken }) => {
         try {
-            const axiosJwt = createAxiosJwt(accessToken, dispatch);
-
-            const res = await axiosJwt.delete("/user/delete_user", {
+            const res = await axiosInstance.delete("/user/delete_user", {
                 headers: {
                     token: `Beare ${accessToken}`,
                 },
@@ -99,14 +92,17 @@ export const deleteUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
     "user/updateUser",
-    async ({ userInfo, accessToken, dispatch }) => {
+    async ({ userInfo, accessToken }) => {
         try {
-            const axiosJwt = createAxiosJwt(accessToken, dispatch);
-            const res = await axiosJwt.put("/user/update_info/", userInfo, {
-                headers: {
-                    token: `Bearer ${accessToken}`,
-                },
-            });
+            const res = await axiosInstance.put(
+                "/user/update_info/",
+                userInfo,
+                {
+                    headers: {
+                        token: `Bearer ${accessToken}`,
+                    },
+                }
+            );
             toast.success(res.data.message);
             return res.data;
         } catch (error) {

@@ -7,6 +7,7 @@ import userSlice from "./Slice/userSlice";
 import bookSlice from "./Slice/bookSlice";
 import checkoutSlice from "./Slice/checkoutSlice";
 import orderSlice from "./Slice/orderSlice";
+import filterSlice from "./Slice/filterSlice";
 
 const persistConfig = {
     key: "root",
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     books: bookSlice.reducer,
     checkout: checkoutSlice.reducer,
     orders: orderSlice.reducer,
+    filter: filterSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

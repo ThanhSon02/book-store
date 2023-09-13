@@ -13,8 +13,13 @@ function route(app) {
     app.use("/api/v1/user", userRouter);
     app.use("/api/v1/book", bookRouter);
     app.use("/api/v1/auth", authRouter);
-    app.use("/", (req, res) => {
-        res.status(200).send("Hello World!!");
+    app.use("/admin_account", (req, res) => {
+        res.status(200).json({
+            admin: {
+                email: "admin@admin.com",
+                password: "123",
+            },
+        });
     });
 }
 

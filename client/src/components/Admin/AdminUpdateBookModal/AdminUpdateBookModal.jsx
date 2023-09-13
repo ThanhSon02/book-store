@@ -72,7 +72,7 @@ function AdminUpdateBookModal({ formRef, currentData }) {
             _id: currentData._id,
         };
 
-        dispatch(updateBook({ bookUpdate, accessToken, dispatch }));
+        dispatch(updateBook({ bookUpdate, accessToken }));
     };
 
     const field = [

@@ -1,17 +1,19 @@
-import { useEffect } from "react";
 import CategoryResult from "../../components/CategoryResult/CategoryResult";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllBook } from "../../service/bookService";
+import { useSelector } from "react-redux";
 import { Spin } from "antd";
 
 function All() {
     const bookList = useSelector((state) => state.books.bookList);
     const isLoading = useSelector((state) => state.books.isLoading);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
+    const filter = useSelector((state) => state.filter);
 
-    useEffect(() => {
-        dispatch(getAllBook());
-    }, []);
+    const dataAfterFilter = bookList.filter(
+        (book) =>
+            book.rating >= filter.rating &&
+            book.price >= filter.price.min &&
+            book.price <= filter.price.max
+    );
 
     return (
         <>
@@ -26,7 +28,10 @@ function All() {
                     <Spin size="large" />
                 </div>
             ) : (
-                <CategoryResult title={"Tất cả sản phẩm"} data={bookList} />
+                <CategoryResult
+                    title={"Tất cả sản phẩm"}
+                    data={dataAfterFilter}
+                />
             )}
         </>
     );

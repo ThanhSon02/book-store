@@ -3,56 +3,48 @@ const Order = require("../models/orderModal");
 
 class orderController {
     createOrder = async (req, res) => {
+        const {
+            user,
+            orderItems,
+            paymentMethod,
+            shippingPrice,
+            totalPrice,
+            totalOrder,
+            isPaid,
+            isDelivered,
+        } = req.body;
         try {
-            const {
-                user,
+            const update = orderItems.map((order) => {
+                return {
+                    updateOne: {
+                        filter: { _id: order.book._id },
+                        update: {
+                            $inc: {
+                                in_stock: -order.quantity,
+                                selled: +order.quantity,
+                            },
+                        },
+                    },
+                };
+            });
+            const bookUpdated = await Book.bulkWrite(update, {});
+            const newOrder = await Order.create({
                 orderItems,
                 paymentMethod,
                 shippingPrice,
                 totalPrice,
                 totalOrder,
+                user,
                 isPaid,
-                isSuccessOrder,
                 isDelivered,
-            } = req.body;
-            const resultUpdateBook = orderItems.map(async (order) => {
-                return await Book.findByIdAndUpdate(
-                    order.book._id,
-                    {
-                        $inc: {
-                            in_stock: -order.quantity,
-                            selled: +order.quantity,
-                        },
-                    },
-                    {
-                        new: true,
-                    }
-                );
             });
-            if (resultUpdateBook) {
-                const newOrder = await Order.create({
-                    user,
-                    orderItems,
-                    paymentMethod,
-                    shippingPrice,
-                    totalPrice,
-                    totalOrder,
-                    isPaid,
-                    isSuccessOrder,
-                    isDelivered,
-                });
-                res.status(200).json({
-                    newOrder,
-                    message: "Create order successfull",
-                });
-            } else {
-                res.status(401).json({
-                    message: "Create order failure",
-                });
-            }
+            res.status(200).json({
+                newOrder,
+                message: "Create order successfull",
+            });
         } catch (error) {
-            res.status(401).json({
-                message: "Create order failure",
+            res.status(403).json({
+                message: "Create order error",
             });
         }
     };

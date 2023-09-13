@@ -1,7 +1,6 @@
 import "./Header.scss";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { UserOutlined } from "@ant-design/icons";
-import Search from "antd/es/input/Search";
 import { Avatar, Badge, Button, Dropdown, Modal, Space } from "antd";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
@@ -9,6 +8,7 @@ import { useState } from "react";
 import Logout from "../Logout/Logout";
 import { useDispatch, useSelector } from "react-redux";
 import { cartCheckout } from "../../redux/Slice/checkoutSlice";
+import SearchInput from "../SearchInput/SearchInput";
 
 function Header() {
     const cartList = useSelector((state) => state.cart.cartList);
@@ -35,10 +35,6 @@ function Header() {
         },
     ];
 
-    const onSearch = (value) => {
-        console.log(value);
-    };
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
         setIsModalOpen(true);
@@ -58,7 +54,7 @@ function Header() {
                     <Avatar src={"/owl.png"} size={72} />
                 </Link>
                 <div className="search">
-                    <Search onSearch={onSearch} />
+                    <SearchInput />
                 </div>
                 <div className="user">
                     {userLogin.userInfo !== null ? (

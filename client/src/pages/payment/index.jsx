@@ -16,6 +16,7 @@ function PaymentPage() {
     const navigate = useNavigate();
     const cartList = useSelector((state) => state.cart.cartList);
     const user = useSelector((state) => state.auth.auth);
+    const { _id, name, email, phone, address } = user.userInfo;
     const accessToken = user.accessToken;
     const [shipping, setShipping] = useState(0);
     const [payment, setPayment] = useState();
@@ -31,14 +32,13 @@ function PaymentPage() {
                     orderItems: cartList,
                     paymentMethod: payment,
                     shippingPrice: shipping,
-                    user: user.userInfo,
+                    user: { _id, name, email, phone, address },
                     totalOrder: caculateTotal(cartList) + shipping,
                     totalPrice: caculateTotal(cartList),
                     isPaid: false,
                     isDelivered: false,
                 },
                 accessToken,
-                dispatch,
             })
         );
         dispatch(clearCart());

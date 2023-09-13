@@ -31,7 +31,7 @@ function ProfileDetail() {
     ];
 
     const handleSubmitForm = (userInfo) => {
-        dispatch(updateUser({ userInfo, accessToken, dispatch }));
+        dispatch(updateUser({ userInfo, accessToken }));
     };
 
     return (
